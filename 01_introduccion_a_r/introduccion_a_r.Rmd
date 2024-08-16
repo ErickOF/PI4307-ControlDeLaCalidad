@@ -1,0 +1,354 @@
+---
+title: "Introducción a R"
+author: "Cui Ting Zhong Xie, Marcela Meneses Guzmán"
+date: "`r Sys.Date()`"
+header-includes:
+    - \renewcommand{\figurename}{Figura}
+output:
+    bookdown::html_document2:
+        toc: TRUE
+        fig_caption: true
+        number_sections: false
+        css: styles.css
+---
+<!-- Install `bookdown`**: If you haven't already, install the `bookdown` package: -->
+<!-- install.packages("bookdown") -->
+
+<!-- Use `bookdown::html_document2` or `bookdown::pdf_document2`: In YAML header, change the output format to one of the `bookdown` formats: -->
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+# **Libro recomendado**
+Se recomienda el libro [R para principiantes](https://bookdown.org/jboscomendoza/r-principiantes4/) de Juan Bosco Mendoza Vega, el cual explica mucho más a fondo el uso de R con ejemplos prácticos.
+
+
+# **Historia del lenguaje R**
+
+R es un entorno y lenguaje de programación fue formalizado en 1992 en Nueva Zelanda por [Ross Ihaka](https://www.stat.auckland.ac.nz/~ihaka/) y [Robert Gentleman](https://qfastr.hms.harvard.edu/faculty-staff/robert-gentleman) como un lenguaje didáctico para el curso de "Introducción a la estadística" en la Universidad de Nueva Zelanda, para ello tomaron como base el lenguaje de programación estadística S, desarrollado por [John Chambers](https://www.britannica.com/biography/John-T-Chambers) y colaboradores en Laboratorios Bell ([AT&T](https://about.att.com/sites/labs))
+
+En el año de 1995 [Martin Mächler](https://people.math.ethz.ch/~maechler/) de la [Escuela Politécnica Federal de Zúrich](https://www.studyinswitzerland.plus/university/eth-zuerich/), convence Ross y Robert a usar la licencia GNU para hacer de R software libre.
+
+# **Presentación de R y RStudio**
+
+RStudio es un entorno de desarrollo integrado (IDE) para el lenguaje de programación R, dedicado a la computación estadística y gráficos. Incluye una consola, editor de sintaxis que apoya la ejecución de código, así como herramientas para el trazado, la depuración y la gestión del espacio de trabajo.
+
+Podemos trabajar directamente en R pero RStudio facilita el interactuar con el lenguaje de programación y los procesos de carga de datos, instalación y administración de paquetes, exportación de gráficos y administración de archivos, entre otros.
+
+R y RStudio son gratuitos y pueden obtenerse en las siguientes direcciones electrónicas [cran.r-project.org](cran.r-project.org), [www.rstudio.com](www.rstudio.com).
+
+# **RStudio esta organizada normalmente en cuatro ventanas**
+
+Cuando abrimos el programa por primera vez aparecen tres ventanas (Figura \@ref(fig:tres-ventanas)), la cuarta se refiere a un script ya existente que abrimos o que creamos nuevo (Figura \@ref(fig:cuatro-ventanas)).
+
+```{r tres-ventanas, echo=FALSE, fig.cap="Las tres ventanas que se muestran al abrir RStudio", out.width = '100%'}
+knitr::include_graphics("src/tres_ventanas.png")
+```
+
+```{r cuatro-ventanas, echo=FALSE, fig.cap="Las tres ventanas que se muestran al abrir RStudio", out.width = '100%'}
+knitr::include_graphics("src/cuatro_ventanas.png")
+```
+
+## **Consola de comandos**
+
+En ella aparecen, en primer lugar, una serie de mensajes con información sobre la versión de R que estamos ejecutando. Seguido aparece el prompt de R, que es el símbolo `>`, junto al que parpadea el cursor indicando que ese es el prompt activo, y que R está esperando una orden (ver la ventana 1 de la Figura \@ref(fig:cuatro-ventanas)).
+
+Crear un nuevo script de trabajo que posteriormente debe guardar siguiendo la instrucción `File->New File->R script` (ver Figura \@ref(fig:crear-nuevo-script-r)) o con el atajo de teclado `Ctrl+Shift+N`.
+
+```{r crear-nuevo-script-r, echo=FALSE, fig.cap="Las tres ventanas que se muestran al abrir RStudio", out.width = '60%'}
+knitr::include_graphics("src/crear_nuevo_script_r.png")
+```
+
+Empecemos haciendo el calculo de `3^2`. Asegúrese de que está situado en la línea del prompt de R. Si es necesario, haga clic con el mouse junto al símbolo `>`, y después teclé:
+
+```{r}
+2 + 2
+```
+
+```{r}
+3^2
+```
+
+aparece la respuesta [1] 9 y justo debajo, aparece un nuevo prompt, que ahora pasa a ser el prompt activo. El uno entre corchetes es la forma en la que R nos indica que esta es la primera línea de su respuesta.
+
+
+# **R como calculadora de operaciones básicas**
+
+En R tenemos los siguientes operadores aritméticos:
+
+| Operador |    Operación    | Ejemplo  | Resultado |
+|:--------:|:---------------:|:--------:|:---------:|
+|     +    |      Suma       | `3 + 2`  |    `5`    |
+|     -    |      Resta      | `3 - 2`  |    `1`    |
+|     *    | Multiplicación  | `3 * 2`  |    `6`    |
+|     /    |    División     | `3 / 2`  |   `1.5`   |
+|     ^    |    Potencia     | `3 ^ 2`  |    `9`    |
+|    %%    | División entera | `3 %% 2` |    `1`    |
+
+## **Suma**
+
+```{r}
+2 + 2
+```
+
+```{r}
+3 + 4
+```
+
+## **Resta**
+
+```{r}
+5 - 1
+```
+
+## **Multiplicación, división y potencia**
+
+```{r}
+-5 * 2
+```
+
+```{r}
+5 / 2
+```
+
+```{r}
+5 ^ 2
+```
+
+# **Funciones integradas en R**
+
+## **Raíz cuadrada**
+
+```{r}
+sqrt(25)
+```
+
+```{r}
+25^(1 / 2)
+```
+
+```{r}
+sqrt(26)
+```
+
+```{r}
+25^(1 / 3)
+```
+
+## **Funciones trigonométricas**
+
+```{r}
+cos(pi)
+```
+
+```{r}
+sin(pi)
+```
+
+```{r}
+tan(pi)
+```
+
+```{r}
+sin(3.14)
+```
+
+La notación que se usa en la respuesta es la forma típica de traducir la notación científica a los lenguajes de ordenador y calculadoras.
+
+Para la función cotangente, se puede usar el inverso de la función `tan(x)` o con las funciones `sin(x)` y `cos(x)`.
+
+```{r}
+1 / tan(pi)
+```
+
+```{r}
+cos(pi) / sin(pi)
+```
+
+
+## **Logaritmo en base 10**
+
+```{r}
+log10(50)
+```
+
+## **Logartimo natural (base `e`)**
+
+```{r}
+log(50)
+```
+
+## **Antilogaritmo natural / función exponencial**
+
+```{r}
+exp(5)
+```
+
+## **Uso prudente de los paréntesis**
+Un uso prudente de paréntesis y espacios en las operaciones es una marca característica del buen hacer, cuando se escribe en código.
+
+```{r}
+1 / ((3 + 1) / 5)
+```
+
+```{r}
+1 / (3 + 1) / 5
+```
+
+```{r}
+2 * (4 + 6)
+```
+
+```{r}
+2 * 4 + 6
+```
+
+# **Variables**
+El operador `<-` es usado para asignaciones generales de valores de variables. Es buena práctica usar `<-` en lugar de `=`. El operador `=` también asigna el valor, pero se recomienda usarlo en llamadas de funciones para especificar los valores de los argumentos. Se verá un ejemplo más adelante.
+
+## **Variables cuantitativas**
+```{r}
+a <- 2
+b = 3
+c <- a + b
+c
+```
+
+```{r}
+a <- b * c
+a
+```
+
+```{r}
+b <- (c - a)^2
+b
+```
+
+```{r}
+c <- a * b
+```
+
+```{r}
+distancia <- 2
+tiempo <- 3
+velocidad <- distancia / tiempo
+velocidad
+```
+
+## **Variables cualitativas**
+Para su asignación se tratan como factores, estos van señalados entre comillas. Se refiere a variables de tipo "string" o cadena de caracteres alfanuméricos.
+
+```{r}
+# Cadenas alfanumericas, se escriben siempre entre comillas
+pronostico <- "Leve"
+pronostico
+```
+
+```{r}
+n <- "bueno"
+n
+```
+
+```{r}
+nn <- "nn=$%&///malo"
+nn
+```
+
+## **Secuencia de números**
+Crea una secuencia numérica.
+```{r}
+1:10
+```
+
+Otra forma de generar la misma secuencia.
+```{r}
+seq(1, 15)
+```
+
+Crea una secuencia del 4 (inicio) al 10 (final) donde el 3er argumento es opcional y determina la distancia entre los números de la secuencia. Si no se lo incluye R usa el valor por defecto que es 1, es decir, hace una secuencia de 1 en 1.
+```{r}
+seq(4, 10, 2)
+```
+
+```{r}
+seq(4, 10)
+```
+
+Secuencia del 0 al 1 que incrementa cada 0.1.
+```{r}
+seq(0, 1, 0.1)
+```
+
+## **Generar repeticiones con la funcion "rep"**
+
+Repite 6 veces el caracter R.
+```{r}
+rep("R", 6)
+```
+
+Repite la secuencia del 1 a 5 tres veces.
+```{r}
+rep(1:5, 3)
+```
+
+Si se quiere que los elementos de una serie sean repetidos en lugar de la serie como un todo, entonces se debe escribir:
+```{r}
+rep(1:6, rep(3, 6))
+```
+
+Lo anterior es una serie del 1 al 6 donde se repite 3 veces los 6 elementos. Para una serie del 2 al 4 con 5 repeticiones de los 3 elementos:
+```{r}
+rep(2:4, rep(5, 3))
+```
+
+Cuando se quiere especificar la repetición de cada uno de los elementos específicamente, se puede crear una lista numérica que indique cuantas veces debe repetirse cada número (por ende, ambas deben ser del mismo tamaño). Por ejemplo, los elementos 4, 6, 2 y 7 se repiten 3, 2, 1 y 4 veces, respectivamente. La función "c" significa concatenar (combina varios elementos).
+```{r}
+rep(c(4, 6, 2, 7), c(3, 2, 1, 4))
+```
+
+# **Operaciones lógicas**
+
+| Operador |      Comparación      | Ejemplo  | Resultado |
+|:--------:|:---------------------:|:--------:|:---------:|
+|    <     |       Menor que       | `3 < 2`  |  `FALSE`  |
+|    <=    |   Menor o igual que   | `3 <= 2` |  `FALSE`  |
+|    >     |       Mayor que       | `3 > 2`  |  `TRUE`   |
+|    >=    |   Mayor o igual que   | `3 >= 2` |  `TRUE`   |
+|    ==    | Exactamente igual que | `3 == 2` |  `FALSE`  |
+|    !=    |    No es igual que    | `3 °= 2` |  `TRUE`   |
+
+#s verdadero que 3 es menor que 6.
+```{r}
+3 < 6
+```
+
+Es falso que 3 sea mayor que 6
+```{r}
+3 > 6
+```
+
+Es falso que 3 sea igual a 6.
+```{r}
+3 == 6
+```
+
+Las operaciones lógicas también se pueden combinar:
+```{r}
+c(3 == 3, 2 < 4, 5 > 10)
+```
+
+# **Clases de objetos**
+
+Ya nos dimos cuenta de que R tiene cinco clases atómicas de objetos:
+- character (letras)
+- numeric (números reales)
+- integer (números enteros)
+- complex (números complejos)
+- logical (verdadero/falso o True/False)
+
+Supongamos tenemos un número, el `2`, R verá este números como objeto numérico (número real). Existe una forma de decir explícitamente que se quieres un entero y es utilizando el sufijo `L` mayúscula, `2L`. ¡¡Has la prueba!!
+
+También existe un número especial llamado `Inf` que representa infinito. `Inf` es como un número real, puede ser usado en cálculos.
+
+Existe otro valor especial llamado `NAN` o `NaN` y representa un valor indefinido, así que puedes pensar en él como si no fuese un número.
