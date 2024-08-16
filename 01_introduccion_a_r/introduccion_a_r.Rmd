@@ -9,7 +9,6 @@ output:
         toc: TRUE
         fig_caption: true
         number_sections: false
-        css: styles.css
 ---
 <!-- Install `bookdown`**: If you haven't already, install the `bookdown` package: -->
 <!-- install.packages("bookdown") -->
