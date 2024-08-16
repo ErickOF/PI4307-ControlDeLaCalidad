@@ -351,3 +351,101 @@ Supongamos tenemos un número, el `2`, R verá este números como objeto numéri
 También existe un número especial llamado `Inf` que representa infinito. `Inf` es como un número real, puede ser usado en cálculos.
 
 Existe otro valor especial llamado `NAN` o `NaN` y representa un valor indefinido, así que puedes pensar en él como si no fuese un número.
+
+## **Vectores**
+
+Para crear un vector, los datos están separados por comas, y rodeados por paréntesis, con una letra `c` que precede al primer paréntesis. Esa letra `c` es el nombre de una función de R que significa concatenar.
+
+```{r}
+edades <- c(22, 21, 18, 19, 17, 21, 18, 20, 17, 18, 17, 22, 20, 19, 18)
+```
+
+Si se quiere ver el resultado de una asignación, se puede rodear toda línea con paréntesis
+```{r}
+(edades <- c(22, 21, 18, 19, 17, 21, 18, 20, 17, 18, 17, 22, 20, 19, 18))
+```
+
+```{r}
+# Se llama a la variable edades
+edades
+```
+
+¿Cómo incorporamos otras edades? Por ejemplo las edades 22, 18, 20, 21, 20.
+
+```{r}
+edades2 <- c(22, 18, 20, 21, 20)
+# Usando la concatenacion de varaibles en otra varaible
+edades3 <- c(edades, edades2)
+edades3
+```
+
+Se puede referir a elementos del vector usando paréntesis rectos (indexar la lista o, simplemente, indexación).
+
+```{r}
+edades[5]
+```
+
+Accesar varios elementos al mismo tiempo.
+
+```{r}
+edades[c(1, 2, 6)]
+```
+
+Extraer los valores del vector que excluye el indice 5.
+
+```{r}
+edades
+```
+
+```{r}
+edades[-5]
+```
+
+Extraer los valores de los índices del 6 al 9 del vector.
+
+```{r}
+edades[6:9]
+```
+
+Se pueden usar operadores lógicos para mostrar solo los elementos que cumplen lo requerido.
+
+```{r}
+edades > 20
+```
+
+Ahora, para mostrar los elemenos mayores que 20:
+
+```{r}
+edades[edades > 20]
+```
+
+Para mostrar los elemenos mayores que 22 (no hay ninguno):
+
+```{r}
+edades[edades > 22]
+```
+
+Para mostrar los elementos igual y que son mayores que 22:
+
+```{r}
+edades[edades >= 22]
+```
+
+¿En cuáles indices el valor de la operación lógica es igual a True?
+
+```{r}
+edades
+```
+
+```{r}
+which(edades > 20)
+```
+
+Aplicar una operación (en este caso, una multiplicación) a cada elemento del vector.
+
+```{r}
+peso <- c(4.4, 5.3, 7.2, 5.2, 8.5, 7.3, 6.0, 10.4, 10.2, 6.1)
+peso2 <- peso * 2
+peso2
+```
+
