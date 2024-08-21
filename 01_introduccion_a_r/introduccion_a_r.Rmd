@@ -85,7 +85,9 @@ En R tenemos los siguientes operadores aritméticos:
 |     ^    |    Potencia     | `3 ^ 2`  |    `9`    |
 |    %%    | División entera | `3 %% 2` |    `1`    |
 
-## **Suma**
+## **Ejemplos de operaciones aritméticos**
+
+### **Suma**
 
 ```{r}
 2 + 2
@@ -95,33 +97,49 @@ En R tenemos los siguientes operadores aritméticos:
 3 + 4
 ```
 
-## **Resta**
+### **Resta**
 
 ```{r}
 5 - 1
 ```
 
-## **Multiplicación, división y potencia**
+### **Multiplicación**
 
 ```{r}
 -5 * 2
 ```
 
+### **División**
+
 ```{r}
 5 / 2
 ```
+
+### **Potencia**
 
 ```{r}
 5 ^ 2
 ```
 
+### **División entera**
+
+```{r}
+5 %% 2
+```
+
 # **Funciones integradas en R**
 
+R tiene un conjunto de función predefinidas que ayudan a simplificar el trabajo del programador. Algunas de ellas se ven a continuación.
+
 ## **Raíz cuadrada**
+
+R tiene la función `sqrt(x)` para calcular por defecto la raíz cuadrada de un valor.
 
 ```{r}
 sqrt(25)
 ```
+
+También, se puede implementar la función expresándola como una potencia de la forma $\sqrt {x} = x^{1 / 2}$. Para el ejemplo anterior:
 
 ```{r}
 25^(1 / 2)
@@ -131,11 +149,27 @@ sqrt(25)
 sqrt(26)
 ```
 
+Para raíces con $n > 2$, se debe calcular el valor usando la forma exponencial $\sqrt[n]{x} = x^{1 / n}$.
+
 ```{r}
 25^(1 / 3)
 ```
 
 ## **Funciones trigonométricas**
+
+Una tabla resumen de las posibles funciones trigonométricas disponibles en R, puede verse a continuación:
+
+| Operador |      Defición       |        Ejemplo         |
+|:--------:|:-------------------:|:----------------------:|
+|  cos(x)  |    Coseno de `x`    |       cos(0) = 1       |
+|  sin(x)  |     Seno de `x`     |    sin(pi / 2) = 1     |
+|  tan(x)  |   Tangente de `x`   |       tan(0) = 0       |
+|  acos(x) |  Arcocoseno de `x`  | acos(0.60) = 0.9272952 |
+|  asin(x) |   Arcoseno de `x`   | asin(0.43) = 0.4444928 |
+|  atan(x) | Arcotangente de `x` | atan(0.11) = 0.1095595 |
+
+
+### **Ejemplos de funciones trigonométricas**
 
 ```{r}
 cos(pi)
@@ -153,8 +187,6 @@ tan(pi)
 sin(3.14)
 ```
 
-La notación que se usa en la respuesta es la forma típica de traducir la notación científica a los lenguajes de ordenador y calculadoras.
-
 Para la función cotangente, se puede usar el inverso de la función `tan(x)` o con las funciones `sin(x)` y `cos(x)`.
 
 ```{r}
@@ -163,6 +195,16 @@ Para la función cotangente, se puede usar el inverso de la función `tan(x)` o 
 
 ```{r}
 cos(pi) / sin(pi)
+```
+
+Eso aplica también para las funciones secante y cosecante.
+
+```{r}
+1 / cos(pi)
+```
+
+```{r}
+1 / sin(pi)
 ```
 
 
@@ -255,53 +297,68 @@ nn
 ```
 
 ## **Secuencia de números**
-Crea una secuencia numérica.
+
+Para crear una secuencia de números, se puede especificar de la forma `inicio:fin`.
+
 ```{r}
 1:10
 ```
 
-Otra forma de generar la misma secuencia.
+Otra forma de generar la misma secuencia es con la función de R `seq(inicio, fin)`.
 ```{r}
 seq(1, 15)
 ```
 
-Crea una secuencia del 4 (inicio) al 10 (final) donde el 3er argumento es opcional y determina la distancia entre los números de la secuencia. Si no se lo incluye R usa el valor por defecto que es 1, es decir, hace una secuencia de 1 en 1.
-```{r}
-seq(4, 10, 2)
-```
+Para crear una secuencia del 4 (`inicio`) al 10 (`fin`) donde el tercer argumento es opcional y determina la distancia entre los números de la secuencia, también conocido como `paso`. Es decir, cuenta de `inicio` a `fin` de `paso` en `paso`. Si no se incluye el tercer argumento, R usa el valor por defecto que es 1, es decir, hace una secuencia de 1 en 1.
 
+### **Ejemplos de creación de secuencias**
+
+#### **Secuencia de `inicio` a `fin`**
 ```{r}
 seq(4, 10)
 ```
 
-Secuencia del 0 al 1 que incrementa cada 0.1.
+
+#### **Secuencia de `inicio` a `fin` con `paso`**
+```{r}
+seq(4, 10, 2)
+```
+
+
+### **Secuencia del `0` al `1` que incrementa cada `0.1`**
 ```{r}
 seq(0, 1, 0.1)
 ```
 
-## **Generar repeticiones con la funcion "rep"**
+## **Generar repeticiones con la función "rep"**
 
-Repite 6 veces el caracter R.
+La función `rep` permite repetir el primer argumento de la función. El segundo argumento (`times`) especifica el número de repeticiones.
+
+Por ejemplo: repite 6 veces el caracter R.
 ```{r}
 rep("R", 6)
 ```
 
-Repite la secuencia del 1 a 5 tres veces.
+También puede repetirse una secuencia.
+
 ```{r}
 rep(1:5, 3)
 ```
 
 Si se quiere que los elementos de una serie sean repetidos en lugar de la serie como un todo, entonces se debe escribir:
+
 ```{r}
 rep(1:6, rep(3, 6))
 ```
 
 Lo anterior es una serie del 1 al 6 donde se repite 3 veces los 6 elementos. Para una serie del 2 al 4 con 5 repeticiones de los 3 elementos:
+
 ```{r}
 rep(2:4, rep(5, 3))
 ```
 
 Cuando se quiere especificar la repetición de cada uno de los elementos específicamente, se puede crear una lista numérica que indique cuantas veces debe repetirse cada número (por ende, ambas deben ser del mismo tamaño). Por ejemplo, los elementos 4, 6, 2 y 7 se repiten 3, 2, 1 y 4 veces, respectivamente. La función "c" significa concatenar (combina varios elementos).
+
 ```{r}
 rep(c(4, 6, 2, 7), c(3, 2, 1, 4))
 ```
@@ -317,22 +374,25 @@ rep(c(4, 6, 2, 7), c(3, 2, 1, 4))
 |    ==    | Exactamente igual que | `3 == 2` |  `FALSE`  |
 |    !=    |    No es igual que    | `3 °= 2` |  `TRUE`   |
 
-#s verdadero que 3 es menor que 6.
+Es verdadero que 3 es menor que 6.
 ```{r}
 3 < 6
 ```
 
-Es falso que 3 sea mayor que 6
+Es falso que 3 sea mayor que 6.
+
 ```{r}
 3 > 6
 ```
 
 Es falso que 3 sea igual a 6.
+
 ```{r}
 3 == 6
 ```
 
 Las operaciones lógicas también se pueden combinar:
+
 ```{r}
 c(3 == 3, 2 < 4, 5 > 10)
 ```
@@ -340,6 +400,7 @@ c(3 == 3, 2 < 4, 5 > 10)
 # **Clases de objetos**
 
 Ya nos dimos cuenta de que R tiene cinco clases atómicas de objetos:
+
 - character (letras)
 - numeric (números reales)
 - integer (números enteros)
@@ -360,7 +421,8 @@ Para crear un vector, los datos están separados por comas, y rodeados por paré
 edades <- c(22, 21, 18, 19, 17, 21, 18, 20, 17, 18, 17, 22, 20, 19, 18)
 ```
 
-Si se quiere ver el resultado de una asignación, se puede rodear toda línea con paréntesis
+Si se quiere ver el resultado de una asignación, se puede rodear toda línea con paréntesis.
+
 ```{r}
 (edades <- c(22, 21, 18, 19, 17, 21, 18, 20, 17, 18, 17, 22, 20, 19, 18))
 ```
@@ -379,19 +441,19 @@ edades3 <- c(edades, edades2)
 edades3
 ```
 
-Se puede referir a elementos del vector usando paréntesis rectos (indexar la lista o, simplemente, indexación).
+Se puede referir a elementos del vector usando paréntesis rectos (indexar el vector o, simplemente, indexación).
 
 ```{r}
 edades[5]
 ```
 
-Accesar varios elementos al mismo tiempo.
+También se puede accesar varios elementos al mismo tiempo, especificando un vector con los índices.
 
 ```{r}
 edades[c(1, 2, 6)]
 ```
 
-Extraer los valores del vector que excluye el indice 5.
+También se pueden extraer los valores del vector excluyendo algún índice no deseado. Para ello, se indica el índice o los índices usando el índice negativo. Por ejemplo, para excluir el índice 5.
 
 ```{r}
 edades
@@ -401,17 +463,19 @@ edades
 edades[-5]
 ```
 
-Extraer los valores de los índices del 6 al 9 del vector.
+También se puede extraer los valores de los índices del 6 al 9 del vector de la siguiente forma:
 
 ```{r}
 edades[6:9]
 ```
 
-Se pueden usar operadores lógicos para mostrar solo los elementos que cumplen lo requerido.
+Se pueden usar operadores lógicos para mostrar solo los elementos que cumplen ciertos requisitos o condiciones.
 
 ```{r}
 edades > 20
 ```
+
+Como se puede ver, se crea una lista de donde los valores `TRUE` son los que cumplen la condición dada.
 
 Ahora, para mostrar los elemenos mayores que 20:
 
@@ -425,27 +489,54 @@ Para mostrar los elemenos mayores que 22 (no hay ninguno):
 edades[edades > 22]
 ```
 
-Para mostrar los elementos igual y que son mayores que 22:
+Para mostrar los elementos iguales o mayores que 22:
 
 ```{r}
 edades[edades >= 22]
 ```
 
-¿En cuáles indices el valor de la operación lógica es igual a True?
+¿En cuáles indices el valor de la operación lógica es igual a `TRUE`?
 
 ```{r}
 edades
 ```
 
+La función `which(condicion)` responde esta pregunta:
+
 ```{r}
 which(edades > 20)
 ```
 
-Aplicar una operación (en este caso, una multiplicación) a cada elemento del vector.
+### **Operaciones scalar-vector**
+
+Aplicar operaciones a cada elemento del vector.
 
 ```{r}
 peso <- c(4.4, 5.3, 7.2, 5.2, 8.5, 7.3, 6.0, 10.4, 10.2, 6.1)
-peso2 <- peso * 2
+```
+
+```{r}
+peso2 <- peso + 2
+peso2
+```
+
+```{r}
+peso2 <- peso - 2
+peso2
+```
+
+```{r}
+peso2 <- peso / 2
+peso2
+```
+
+```{r}
+peso2 <- peso %% 2
+peso2
+```
+
+```{r}
+peso2 <- 2 * peso
 peso2
 ```
 
@@ -470,12 +561,6 @@ var(peso)
 
 ```{r}
 cor(peso2, peso)
-```
-
-## **Gráfico simple**
-
-```{r}
-plot(peso, peso2)
 ```
 
 # **Aritmética de vectores**
