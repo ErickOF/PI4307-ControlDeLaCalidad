@@ -35,18 +35,18 @@ RStudio es un entorno de desarrollo integrado (IDE) para el lenguaje de programa
 
 Podemos trabajar directamente en R pero RStudio facilita el interactuar con el lenguaje de programación y los procesos de carga de datos, instalación y administración de paquetes, exportación de gráficos y administración de archivos, entre otros.
 
-R y RStudio son gratuitos y pueden obtenerse en las siguientes direcciones electrónicas [cran.r-project.org](cran.r-project.org), [www.rstudio.com](www.rstudio.com).
+R y RStudio son gratuitos y pueden obtenerse en las siguientes direcciones electrónicas [cran.r-project.org](https://cran.r-project.org), [www.rstudio.com](https://www.rstudio.com).
 
 # **RStudio esta organizada normalmente en cuatro ventanas**
 
 Cuando abrimos el programa por primera vez aparecen tres ventanas (Figura \@ref(fig:tres-ventanas)), la cuarta se refiere a un script ya existente que abrimos o que creamos nuevo (Figura \@ref(fig:cuatro-ventanas)).
 
 ```{r tres-ventanas, echo=FALSE, fig.cap="Las tres ventanas que se muestran al abrir RStudio", out.width = '100%'}
-knitr::include_graphics("src/tres_ventanas.png")
+knitr::include_graphics("src/imgs/tres_ventanas.png")
 ```
 
 ```{r cuatro-ventanas, echo=FALSE, fig.cap="Las tres ventanas que se muestran al abrir RStudio", out.width = '100%'}
-knitr::include_graphics("src/cuatro_ventanas.png")
+knitr::include_graphics("src/imgs/cuatro_ventanas.png")
 ```
 
 ## **Consola de comandos**
@@ -55,8 +55,14 @@ En ella aparecen, en primer lugar, una serie de mensajes con información sobre 
 
 Crear un nuevo script de trabajo que posteriormente debe guardar siguiendo la instrucción `File->New File->R script` (ver Figura \@ref(fig:crear-nuevo-script-r)) o con el atajo de teclado `Ctrl+Shift+N`.
 
-```{r crear-nuevo-script-r, echo=FALSE, fig.cap="Las tres ventanas que se muestran al abrir RStudio", out.width = '60%'}
-knitr::include_graphics("src/crear_nuevo_script_r.png")
+```{r crear-nuevo-script-r, echo=FALSE, fig.cap="Cómo crear un nuevo script en R Studio", out.width = '60%'}
+knitr::include_graphics("src/imgs/crear_nuevo_script_r.png")
+```
+
+Adicionalmente, R Studio también tiene la opción de crear un archivo de `R Markdown`, el cual es un archivo especial que sigue la sintaxis de [Markdown](https://www.markdownguide.org/cheat-sheet/) pero con algunas mejoras específicas de [R Markdown](https://bookdown.org/yihui/rmarkdown). Para crearlo, vamos a `File->New File->R Markdown` y le damos un título/nombre (*Title*), ponemos el autor y seleccionamos como formato de salida por defecto (*Default Output Format*) **HTML** (*Hypertext Markup Language*).
+
+```{r crear-nuevo-rmd, echo=FALSE, fig.cap="Cómo crear un nuevo R Markdown en R Studio", out.width = '60%'}
+knitr::include_graphics("src/imgs/crear_nuevo_rmd.png")
 ```
 
 Empecemos haciendo el calculo de `3^2`. Asegúrese de que está situado en la línea del prompt de R. Si es necesario, haga clic con el mouse junto al símbolo `>`, y después teclé:
@@ -332,7 +338,7 @@ seq(0, 1, 0.1)
 
 ## **Generar repeticiones con la función "rep"**
 
-La función `rep` permite repetir el primer argumento de la función. El segundo argumento (`times`) especifica el número de repeticiones.
+La función `rep` permite repetir el primer argumento de la función. El segundo argumento (`times`) específica el número de repeticiones.
 
 Por ejemplo: repite 6 veces el caracter R.
 ```{r}
@@ -804,7 +810,7 @@ l[["c"]]
 l$d
 ```
 
-## **¿Qué quiero estraer?**
+## **¿Qué quiero extraer?**
 
 ```{r}
 l$d[[1]]
@@ -972,7 +978,7 @@ Un CSV (comma-separated values) es un archivo de texto que almacena los datos en
 
 Se puede abrir el archivo en el bloc de notas comprobando que nos es más que un archivo de texto donde las columnas están separadas por ";" o "," (en este caso) y los cambios de fila por salto de línea.
 
-Debemos establecer el directorio donde se encuentra el archivo a leer como directorio de trabajo.
+Opcionalmente, se puede establecer el directorio donde se encuentra el archivo a leer como directorio de trabajo.
 
 ```{r}
 # Buscamos el directorio de trabajo
@@ -982,8 +988,12 @@ Debemos establecer el directorio donde se encuentra el archivo a leer como direc
 #setwd("C:/Users/.....")
 ```
 
+Esto no es obligatorio (por eso está comentado en la celda anterior), se puede guardar el archivo CSV en la misma carpeta que está el código de `R` o `R Markdown`. Es una buena práctica, crear una subcarpeta llamada `src` para colocar imágenes, videos, archivos de datos, entre otros.
+
+Manteniendo las líneas de código de la celda anterior comentadas, puede ver que el archivo CSV se carga de forma correcta.
+
 ```{r}
-datos_estudiantes <- read.csv("EjemploEstudiantes.csv",
+datos_estudiantes <- read.csv("src/data/EjemploEstudiantes.csv",
                               header = TRUE,
                               sep = ";",
                               dec = ",",
